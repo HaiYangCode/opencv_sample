@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/Users/yh/AndroidStudioProjects/opencv_sample/build",
+  "command": "/usr/bin/clang++  -isystem /usr/local/Cellar/opencv/4.7.0_2/include/opencv4 -g -std=gnu++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -o CMakeFiles/opencv_sample.dir/src/opencv_sample.cpp.o -c /Users/yh/AndroidStudioProjects/opencv_sample/src/opencv_sample.cpp",
+  "file": "/Users/yh/AndroidStudioProjects/opencv_sample/src/opencv_sample.cpp",
+  "output": "CMakeFiles/opencv_sample.dir/src/opencv_sample.cpp.o"
+}
+]
