@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<iostream>
 #include "opencv2/opencv.hpp"
+#include "FaceTracking.h"
 
 using namespace std;
 using namespace cv;
@@ -19,11 +20,14 @@ void showCamera(){
     VideoCapture pic(0);
     Mat src;//表示一个矩阵，代表一张图片
     Mat  dest;//处理后的图片
-    CascadeClassifier clazzifier;
-    if(!clazzifier.load("/Users/yh/ndkSource/OpenCV-android-sdk/sdk/etc/lbpcascades/lbpcascade_frontalface.xml")){
-        printf("加载模型失败");
-        return;
-    }
+    String stdFileName = "/Users/yh/ndkSource/OpenCV-android-sdk/sdk/etc/lbpcascades/lbpcascade_frontalface.xml";
+
+    cv::Ptr<CascadeDetectorAdapter> mainDetector = makePtr<CascadeDetectorAdapter>(
+            makePtr<CascadeClassifier>(stdFileName));
+    cv::Ptr<CascadeDetectorAdapter> trackingDetector = makePtr<CascadeDetectorAdapter>(
+            makePtr<CascadeClassifier>(stdFileName));
+    DetectorAgregator  *result = new DetectorAgregator(mainDetector, trackingDetector);
+    result->tracker->run();
     std::vector<Rect> faces;
     while (1)
     {
@@ -44,7 +48,8 @@ void showCamera(){
 #endif
         //增加轮廓对比(直方图均衡)
         equalizeHist(dest,dest);
-        clazzifier.detectMultiScale(dest,faces);
+        result->tracker->process(dest);
+		result->tracker->getObjects(faces);
         for (auto face:faces)
         {
             rectangle(dest,face,Scalar(255,0,255));
@@ -53,7 +58,7 @@ void showCamera(){
         imshow("camera",dest);
         waitKey(20);
     };
-
+    result->tracker->stop();
 }
 
 int main(){

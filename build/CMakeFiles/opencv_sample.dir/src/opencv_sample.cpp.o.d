@@ -545,4 +545,5 @@ CMakeFiles/opencv_sample.dir/src/opencv_sample.cpp.o: \
   /usr/local/Cellar/opencv/4.7.0_2/include/opencv4/opencv2/stitching/detail/blenders.hpp \
   /usr/local/Cellar/opencv/4.7.0_2/include/opencv4/opencv2/video.hpp \
   /usr/local/Cellar/opencv/4.7.0_2/include/opencv4/opencv2/video/tracking.hpp \
-  /usr/local/Cellar/opencv/4.7.0_2/include/opencv4/opencv2/video/background_segm.hpp
+  /usr/local/Cellar/opencv/4.7.0_2/include/opencv4/opencv2/video/background_segm.hpp \
+  /Users/yh/AndroidStudioProjects/opencv_sample/src/FaceTracking.h
